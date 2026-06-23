@@ -15,7 +15,7 @@ class AuthController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt($request->password)
+            'password' => $request->password,
         ]);
 
         $token = $user->createToken('api_token')->plainTextToken;
