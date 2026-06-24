@@ -23,7 +23,7 @@ class Blueprint extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function textBrutes(){
-        return $this->hasMany(TextBrute::class);
+    public function rawContents(){
+        return $this->hasMany(RawContent::class);
     }
 }
