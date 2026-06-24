@@ -24,7 +24,6 @@ class StoreRawContentRequest extends FormRequest
     {
         return [
             'content' => ['required', 'string', 'max:255'],
-            'user_id' => ['required', 'exists:users,id'],
             'blueprint_id' => ['required', 'exists:blueprints,id'],
         ];
     }
