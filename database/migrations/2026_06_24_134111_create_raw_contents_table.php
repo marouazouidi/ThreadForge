@@ -11,23 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('blueprints', function (Blueprint $table) {
+        Schema::create('raw_contents', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('tone');
-            $table->integer('max_characters')->default(280);
-            $table->integer('max_hashtags')->default(2);
-            $table->json('rules')->nullable();
+            $table->text('content');
+            $table->string('status')->default('pending');
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('blueprint_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
 
+    
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('blueprints');
+        Schema::dropIfExists('raw_contents');
     }
 };
