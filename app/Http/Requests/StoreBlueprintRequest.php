@@ -27,7 +27,7 @@ class StoreBlueprintRequest extends FormRequest
             'tone'=>['required', 'string'],
             'max_characters'=>['required', 'integer'],
             'max_hashtags'=>['required', 'integer'],
-            'rules'=>['required', 'array'],
+            'rules'=>[ 'array'],
         ];
     }
 }

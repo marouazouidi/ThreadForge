@@ -1,10 +1,10 @@
 <?php
 
+use App\Http\Controllers\ChatController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use Illuminate\Http\Request;
 use App\Http\Controllers\BlueprintController;
-use App\Http\Controllers\PostController;
 use App\Http\Controllers\RawContentController;
 
 Route::post('/register', [AuthController::class, 'register']);
@@ -30,9 +30,9 @@ Route::middleware('auth:sanctum')->group(function (){
     Route::get('/posts', [PostController::class, 'index']);
     Route::get('/posts/{post}', [PostController::class, 'show']);
     Route::put('/posts/{post}/status', [PostController::class, 'UpdateStatus']);
+
+    Route::post('/posts/{post}/chat', [ChatController::class, 'store']);
 });
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
 

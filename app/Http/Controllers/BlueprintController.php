@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreBlueprintRequest;
+use App\Http\Resources\BlueprintResource;
 use App\Models\Blueprint;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class BlueprintController extends Controller
 {
@@ -18,7 +18,7 @@ class BlueprintController extends Controller
             ->blueprints()
             ->get();
 
-        return response()->json($blueprint);
+        return BlueprintResource::collection($blueprint);
     }
 
 
@@ -38,7 +38,7 @@ class BlueprintController extends Controller
                     $request->validated()
                 );
 
-        return response()->json($blueprint, 201);
+        return response()->json(new BlueprintResource($blueprint), 201);
     }
 
     /**
@@ -46,7 +46,7 @@ class BlueprintController extends Controller
      */
     public function show(Blueprint $blueprint)
     {
-        return response()->json($blueprint);
+        return new BlueprintResource($blueprint);
     }
 
 
@@ -60,7 +60,7 @@ class BlueprintController extends Controller
             $request->validated()
         );
 
-        return response()->json($blueprint);
+        return new BlueprintResource($blueprint);
     }
 
     /**
