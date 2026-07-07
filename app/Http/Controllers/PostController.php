@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdatePostStatusRequest;
+use App\Http\Resources\PostResource;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -22,7 +23,7 @@ class PostController extends Controller
             )
         )->get();
 
-        return response()->json($posts);
+        return PostResource::collection($posts);
     }
 
     /**
@@ -38,7 +39,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return response()->json($post);
+        return new PostResource($post);
     }
 
 
@@ -53,7 +54,7 @@ class PostController extends Controller
 
         return response()->json([
             'message' => 'Post status updated successfully',
-            'post' => $post
+            'post' => new PostResource($post)
         ]);
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\UserResource;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +19,7 @@ class AuthController extends Controller
 
         $token = $user->createToken('api_token')->plainTextToken;
 
-        return response()->json([ 'user' => $user,  'token' => $token], 201);
+        return response()->json(['user' => new UserResource($user), 'token' => $token], 201);
     }
 
 
@@ -45,9 +46,9 @@ class AuthController extends Controller
             ->currentAccessToken()
             ->delete();
 
-        return response()->json(([
+        return response()->json([
             'message' => 'Logged out successfully'
-        ]));
+        ]);
     }
 
 
