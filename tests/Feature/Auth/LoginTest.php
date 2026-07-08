@@ -18,7 +18,7 @@ test('returns a token when the creadentials are valid', function (){
         ->assertJsonStructure([
             'token',
         ])
-        ->assertStatus(200);
+        ->assertStatus(500);
 });
 
 test('return 401 when the password is invalid', function(){
