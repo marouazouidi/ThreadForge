@@ -1,58 +1,365 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🚀 ThreadForge API
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+> AI-powered REST API built with Laravel that generates social media content asynchronously using Laravel AI, Groq, Queues, and GitHub Actions CI.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+# 📸 Project Preview
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 🧪 Feature Tests
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+All feature tests pass successfully.
 
-## Learning Laravel
+📸 **INSERT SCREENSHOT HERE**
+> Screenshot of `php artisan test`
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+---
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🔄 Continuous Integration
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+GitHub Actions automatically runs all tests on every Push and Pull Request.
 
-## Agentic Development
+📸 **INSERT SCREENSHOT HERE**
+> Screenshot showing ✅ All checks have passed
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+---
 
-```bash
-composer require laravel/boost --dev
+## ☁️ Azure Virtual Machine
 
-php artisan boost:install
+ThreadForge is deployed on an Ubuntu Virtual Machine hosted on Microsoft Azure.
+
+📸 **INSERT SCREENSHOT HERE**
+> Screenshot of Azure VM Overview
+
+---
+
+# 📖 Table of Contents
+
+- Overview
+- Features
+- Technologies
+- Architecture
+- Project Structure
+- Installation
+- Environment Variables
+- Running the Project
+- Queue Worker
+- Authentication
+- API Endpoints
+- Testing
+- Continuous Integration
+- Azure Deployment
+- Future Improvements
+
+---
+
+# 📌 Overview
+
+ThreadForge is an AI-powered backend API designed to generate high-quality social media content from reusable writing blueprints.
+
+Instead of making users wait while AI generates content, the application dispatches the request to a background Job using Laravel Queues. This keeps the API fast and responsive.
+
+The project demonstrates modern backend development practices including asynchronous processing, automated testing, continuous integration, and cloud deployment.
+
+---
+
+# ✨ Features
+
+- User Authentication (Laravel Sanctum)
+- Blueprint CRUD
+- AI Content Generation
+- Asynchronous Jobs
+- Queue Processing
+- Laravel AI SDK
+- Groq Integration
+- Feature Testing with Pest
+- GitHub Actions CI
+- Azure VM Deployment
+
+---
+
+# 🛠 Technologies
+
+| Technology | Purpose |
+|------------|---------|
+| Laravel 13 | Backend Framework |
+| PHP 8.4 | Programming Language |
+| Laravel AI | AI SDK |
+| Groq | LLM Provider |
+| Sanctum | Authentication |
+| SQLite / MySQL | Database |
+| Pest | Testing |
+| GitHub Actions | CI/CD |
+| Azure VM | Cloud Hosting |
+| Ubuntu Server | Production Server |
+| Nginx | Web Server |
+
+---
+
+# 🏗 Architecture
+
+```text
+                    Client
+                       │
+                       ▼
+                 Laravel API
+                       │
+       ┌───────────────┴───────────────┐
+       │                               │
+ Authentication                 Blueprint CRUD
+       │
+       ▼
+Generate Raw Content
+       │
+       ▼
+Dispatch Job
+       │
+       ▼
+Laravel Queue
+       │
+       ▼
+Laravel AI SDK
+       │
+       ▼
+Groq API
+       │
+       ▼
+Generated Content
+       │
+       ▼
+Database
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+📸 **INSERT ARCHITECTURE DIAGRAM HERE**
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+# 📂 Project Structure
 
-## Code of Conduct
+```text
+app
+│
+├── Http
+│   ├── Controllers
+│   ├── Requests
+│   └── Resources
+│
+├── Jobs
+├── Models
+├── Services
+│
+database
+│
+├── migrations
+├── factories
+└── seeders
+│
+routes
+│
+├── api.php
+└── web.php
+│
+tests
+├── Feature
+└── Unit
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+---
 
-## Security Vulnerabilities
+# ⚙ Installation
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Clone the repository
 
-## License
+```bash
+git clone https://github.com/your-username/threadforge.git
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+cd threadforge
+```
+
+Install dependencies
+
+```bash
+composer install
+```
+
+Create environment file
+
+```bash
+cp .env.example .env
+```
+
+Generate application key
+
+```bash
+php artisan key:generate
+```
+
+Run migrations
+
+```bash
+php artisan migrate
+```
+
+Start the application
+
+```bash
+php artisan serve
+```
+
+---
+
+# 🔑 Environment Variables
+
+```env
+APP_NAME=ThreadForge
+
+DB_CONNECTION=mysql
+
+QUEUE_CONNECTION=database
+
+AI_DRIVER=groq
+
+GROQ_API_KEY=YOUR_API_KEY
+```
+
+---
+
+# ⚙ Queue Worker
+
+Since AI generation runs asynchronously, start the queue worker.
+
+```bash
+php artisan queue:work
+```
+
+---
+
+# 🔐 Authentication
+
+Authentication is handled using Laravel Sanctum.
+
+Login endpoint
+
+```
+POST /api/login
+```
+
+Response
+
+```json
+{
+    "token": "...",
+    "user": {
+        ...
+    }
+}
+```
+
+Use the returned token for all protected routes.
+
+```
+Authorization: Bearer YOUR_TOKEN
+```
+
+---
+
+# 📡 API Endpoints
+
+## Authentication
+
+| Method | Endpoint |
+|---------|----------|
+| POST | /api/login |
+| POST | /api/logout |
+
+---
+
+## Blueprints
+
+| Method | Endpoint |
+|---------|----------|
+| GET | /api/blueprints |
+| POST | /api/blueprints |
+| GET | /api/blueprints/{id} |
+| PUT | /api/blueprints/{id} |
+| DELETE | /api/blueprints/{id} |
+
+---
+
+## Raw Content
+
+| Method | Endpoint |
+|---------|----------|
+| POST | /api/raw-contents |
+
+The request immediately dispatches a background Job while AI generation continues asynchronously.
+
+📸 **INSERT POSTMAN SCREENSHOT HERE**
+
+---
+
+# 🧪 Testing
+
+Run all tests
+
+```bash
+php artisan test
+```
+
+Run a specific test
+
+```bash
+php artisan test tests/Feature/Auth/LoginTest.php
+```
+
+Implemented Feature Tests
+
+- Login
+- Logout
+- Blueprint Index
+- Blueprint Store
+- Raw Content Generation
+
+📸 **INSERT TEST RESULT SCREENSHOT HERE**
+![alt text](tests.png)
+---
+
+# 🔄 Continuous Integration
+
+This project uses GitHub Actions to automatically verify code quality.
+
+Workflow executes on:
+
+- Push
+- Pull Request
+
+Pipeline Steps
+
+- Checkout repository
+- Install PHP
+- Install Composer dependencies
+- Generate Laravel key
+- Run migrations
+- Execute all Feature Tests
+
+A green check indicates every test passed successfully.
+
+📸 **INSERT GITHUB ACTIONS SCREENSHOT HERE**
+![alt text](githubActions.png)
+
+---
+
+# ☁ Azure Deployment
+
+The application is deployed manually on an Azure Ubuntu Virtual Machine.
+
+Deployment environment
+
+- Ubuntu Server 24.04 LTS
+- Azure Virtual Machine
+- Nginx
+- PHP-FPM
+- MySQL
+- SSH Authentication
+
+📸 **INSERT AZURE VM SCREENSHOT HERE**
